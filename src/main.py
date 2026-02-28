@@ -1,3 +1,4 @@
+import os
 import query_reader
 from scraper import Scraper
 import time
@@ -12,6 +13,7 @@ S = Scraper()
 for q in queries: # Loop over all the queries in user_queries.json
     all_products = []
     filename = q + ".json" #Creates a file with the name of the query e-g if the query is for headphones, headphones.json is created
+    filename = os.path.join("results", filename) # Saves the file in results folder
     for page in range(1, 21): # Loop over 20 pages
         url = basic_url + q + "&page=" + str(page) #Construct url with basix url,query and page no.
         print("-------------------Fetching data for products", q, "on page", page,"----------------------------")
